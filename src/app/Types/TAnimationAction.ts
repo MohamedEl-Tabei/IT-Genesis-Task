@@ -1,0 +1,1 @@
+export type TAnimationAction = "glow" |"fade-in"| "fade-in-bottom" | "bounce-in-fwd"

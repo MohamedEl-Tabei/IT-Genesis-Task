@@ -1,0 +1,16 @@
+@switch (glowPosition()) {
+@case ("top") {
+<h2 appAnimation action="glow">{{topText()}}</h2>
+<h2>{{centerText()}}</h2>
+<h2>{{bottomText()}}</h2>
+}@case ("center") {
+<h2>{{topText()}}</h2>
+<h2 appAnimation action="glow">{{centerText()}}</h2>
+<h2>{{bottomText()}}</h2>
+}
+@case ("bottom") {
+<h2>{{topText()}}</h2>
+<h2>{{centerText()}}</h2>
+<h2 appAnimation action="glow">{{bottomText()}}</h2>
+}
+}

@@ -1,0 +1,26 @@
+section{
+    padding-bottom: 0px;
+}
+h1 {
+    color: #c8c2bd;
+    font-size: 80px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.05;
+}
+
+
+video {
+    width: 100%;
+}
+
+.p-container {
+    color: #86868b;
+    gap: 50px;
+    margin: 112px 0px 96px;
+    font-size: 22px;
+    line-height: 1.381002381;
+    font-weight: 600;
+    letter-spacing: .011em;
+    text-justify: newspaper;
+}

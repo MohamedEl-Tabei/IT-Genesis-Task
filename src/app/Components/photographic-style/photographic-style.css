@@ -1,0 +1,10 @@
+app-base-text-glow{
+    display: block;
+    margin-bottom: 112px;
+}
+p{
+    margin-top: 45px;
+    margin-inline: auto;
+    width: 40%;
+    text-align: center;
+}

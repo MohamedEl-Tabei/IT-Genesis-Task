@@ -1,0 +1,21 @@
+button {
+    background-color: #0071e3;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    border: 0.800px solid #0071e3;
+}
+
+button:hover {
+    border-color: #0076DF;
+    background-color: #0076DF;
+}
+
+.bg-blur {
+    border: none;
+}
+
+.bg-blur:hover {
+    background-color: #828284b3 !important;
+
+}
