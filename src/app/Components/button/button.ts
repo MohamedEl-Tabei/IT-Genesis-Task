@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -10,4 +10,6 @@ export class Button {
   width=input<string>("")
   height=input<string>("")
   bg=input<undefined|"blur">()
+  disabled=input<boolean|undefined>(false)
+  size=input<"lg"|"sm">("lg")
 }

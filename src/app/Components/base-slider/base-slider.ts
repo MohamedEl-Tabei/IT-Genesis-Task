@@ -1,96 +1,68 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, input, output, viewChild } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, input, viewChild } from '@angular/core';
 import { SwiperContainer } from 'swiper/element';
 import { SlideContent } from '../../Interfaces/slide-content';
-import { Swiper, SwiperEvents } from 'swiper/types';
 import { SwiperService } from '../../services/swiper-service';
 import { TSignalName } from '../../Types/TSignalName';
+import { Animation } from "../../Directives/animation";
+import { Swiper } from 'swiper/types';
+import { Button } from "../button/button";
+import { VideoSrvice } from '../../services/video-srvice';
 
 @Component({
   selector: 'app-base-slider',
-  imports: [],
+  imports: [Animation, Button],
   templateUrl: './base-slider.html',
   styleUrl: './base-slider.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class BaseSlider {
   swiperRef = viewChild<ElementRef<SwiperContainer>>("swiperRef");
-  observer!: IntersectionObserver
-  isOnView = false
-  isEnd = false
-  filters = ["", "brightness", "grayscale"]
-
+  swiper!: Swiper | undefined
+  swiperElement!: SwiperContainer | undefined
+  videoIcon = ""
+  activeVideoIndex = 0
   //#region inputs
   slideWidth = input<string>("100%")
-  slideHeight = input<string>("100%")
   slides = input<SlideContent[]>([]);
-  sliderType = input<"filter" | "">()
-  image = input<string>("")
   signalName = input<TSignalName>(undefined)
+  descriptions = input<string[]>([])
+  classNames = input<string>("")
   //#endregion
   //#region lifecyle
-  constructor(private swiperService: SwiperService) { }
- 
+  constructor(private swiperService: SwiperService, private videoService: VideoSrvice) {
+    this.videoIcon = videoService.icons.pauseIcon
+  }
   ngAfterViewInit() {
-    this.observer = new IntersectionObserver(([entry]) => {
-      this.isOnView = entry.isIntersecting
-    })
-    if (this.swiperRef()?.nativeElement) this.observer.observe(this.swiperRef()?.nativeElement as Element)
-      
-    this.swiperService.setSignal(this.signalName(),this.swiperRef()?.nativeElement.swiper )
-    this.setStyle()
+    this.swiperElement = this.swiperRef()?.nativeElement
+    this.swiper = this.swiperElement?.swiper
+    this.swiperService.setSignal(this.signalName(), this.swiper)
   }
   //#endregion
-  //#region style
-  setStyle() {
-    let swiper = this.swiperRef()?.nativeElement.swiper
-    let elementSwiper = this.swiperRef()?.nativeElement
-    switch (this.sliderType()) {
-      case "filter":
-        elementSwiper?.style.setProperty("background-image", 'url(' + this.image() + ')')
-        swiper?.mousewheel.enable()
-        elementSwiper?.setAttribute("space-between", "0")
-        elementSwiper?.setAttribute("free-mode", "true")
-        break;
-
-      default:
-        break;
+  //#region slide change
+  onSwiperslidechange() {
+    const activeVideoElement = this.swiperElement?.children[this.swiper?.activeIndex || 0].firstChild as HTMLVideoElement
+    if (activeVideoElement instanceof HTMLVideoElement) {
+      if (this.activeVideoIndex > 0) {
+        const activeVideo = this.swiperElement?.children[this.activeVideoIndex].firstChild as HTMLVideoElement
+        if (activeVideo instanceof HTMLVideoElement) activeVideo.pause()
+      }
+      this.videoIcon = this.videoService.icons.pauseIcon
+      this.activeVideoIndex = this.swiper?.activeIndex || 0
+      activeVideoElement.play()
     }
   }
   //#endregion
-  //#region event handlers
-
-  onScrollFilter(event: Event) {
-    if (this.sliderType() == "filter") {
-      let evnt = event as WheelEvent
-      let swiper = this.swiperRef()?.nativeElement.swiper
-      let swiperElement = this.swiperRef()?.nativeElement
-      this.isEnd = swiper?.isEnd || false
-
-      if (evnt.deltaY < 0) {
-
-        if (swiper?.isBeginning) swiper.mousewheel.disable()
-        else {
-          swiperElement?.scrollIntoView({ behavior: "smooth" })
-          evnt.preventDefault()
-          swiper?.mousewheel.enable()
-        }
-        if (swiper?.mousewheel.enabled) swiperElement?.style.setProperty("width", "100%")
-      }
-      else {
-        if (swiper?.isEnd) swiper.mousewheel.disable()
-        else {
-          swiperElement?.scrollIntoView()
-          evnt.preventDefault()
-
-          swiper?.mousewheel.enable()
-        }
-        if (!swiper?.mousewheel.enabled) swiperElement?.style.setProperty("width", "80%")
-      }
-
-
-    }
-
+  //#region video
+  onToggleVideo() {
+    const activeVideo = this.swiperElement?.children[this.activeVideoIndex].firstChild as HTMLVideoElement
+    this.videoIcon = this.videoService.toggle(activeVideo)
   }
-
+  onVideoEnded() {
+    this.videoIcon = this.videoService.icons.restartIcon
+  }
   //#endregion
+
+
+
+
 }

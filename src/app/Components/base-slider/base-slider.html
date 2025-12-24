@@ -1,20 +1,27 @@
 <swiper-container #swiperRef slides-per-view="auto" centered-slides="true" space-between="20"
-    class="rounded-xl m-auto" allow-touch-move="false" (wheel)="onScrollFilter($event)">
+    class="rounded-xl m-auto {{classNames()}}" (swiperslidechange)="onSwiperslidechange()" 
+    appAnimation action="fade-in-bottom" [threshold]=".1">
 
-
-    @if (sliderType()=="filter") {
-    @for (f of filters; track $index) { <swiper-slide class="border-x-8  border-black {{f}} {{isEnd?'rounded-xl':''}}">
-    </swiper-slide>}
-    }@else {
     @for (slide of slides(); track $index) {
-    <swiper-slide>
+    <swiper-slide [style.width]="slideWidth()">
         @if (slide.isVideo) {
-        <video class="rounded-2xl" [muted]="true" [autoplay]="$index==0" src="{{slide.src}}"></video>
+        <video (ended)="onVideoEnded()" class="rounded-2xl" [muted]="true" [autoplay]="$index==0"
+            src="{{slide.src}}"></video>
+        @if(activeVideoIndex==$index){
+        <app-button class="absolute right-23 top-118" bg="blur" (click)="onToggleVideo()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+                <path [attr.d]="videoIcon"></path>
+            </svg>
+        </app-button>
+        }
         }
         @else {
         <img class="rounded-2xl" src="{{slide.src}}" alt="">
         }
+        @if(descriptions().length){
+        <div class="description {{classNames().includes('text-gradient')?'text-gradient':''}}">
+            {{descriptions()[$index]}}</div>
+        }
     </swiper-slide>
-    }
     }
 </swiper-container>

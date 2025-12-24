@@ -1,1 +1,1 @@
-export type TSignalName = "closerLook" |undefined
+export type TSignalName = "closerLook" | "titanium" | "cameraControl" | undefined

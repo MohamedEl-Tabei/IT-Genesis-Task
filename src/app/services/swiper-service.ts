@@ -9,18 +9,26 @@ export class SwiperService {
 
   signals = {
     closerLook: signal<Swiper | undefined>(undefined),
+    titanium: signal<Swiper | undefined>(undefined),
+    cameraControl: signal<Swiper | undefined>(undefined)
   }
   setSignal(signalName: TSignalName, swiper: Swiper | undefined) {
-        console.log(signalName);
-    switch (signalName) {
-      case "closerLook":
-        console.log("ss");
-        
-        this.signals.closerLook.set(swiper)
-        break;
-
-      default:
-        break;
+    if (signalName) this.signals[signalName].set(swiper)
+  }
+  next(name: TSignalName) {
+    if (name) {
+      let swiper = this.signals[name]()
+      swiper?.slideNext()
+      return swiper?.isEnd
     }
+    return false;
+  }
+  prev(name: TSignalName) {
+    if (name) {
+      let swiper = this.signals[name]()
+      swiper?.slidePrev()
+      return swiper?.isBeginning
+    }
+    return false;
   }
 }

@@ -1,0 +1,21 @@
+<div class="relative">
+    <swiper-container #swiperRefScreen slides-per-view="auto" centered-slides="true" space-between="20" appAnimation
+        action="fade-in-bottom" [threshold]=".1">
+        <swiper-slide>
+            <div class="swiper-zoom-container">
+                <div class="swiper-zoom-target zoom">
+                    <video class="rounded-2xl" [muted]="true" [autoplay]="true" src="{{src()}}"></video>
+                    <img class="absolute top-0 right-1" src="images/iphone.png" alt="">
+                </div>
+            </div>
+        </swiper-slide>
+    </swiper-container>
+    <swiper-container #swiperRefControl free-mode="true" class="absolute top-0" slides-per-view="auto"
+        centered-slides="true" space-between="20" (wheel)="onScroll($event)" appAnimation action="fade-in-bottom"
+        [threshold]=".1">
+
+        @for (slide of [1,2,3]; track $index) {
+        <swiper-slide>{{slide}} </swiper-slide>
+        }
+    </swiper-container>
+</div>

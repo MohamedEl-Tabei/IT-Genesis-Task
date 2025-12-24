@@ -3,6 +3,7 @@
 
 :root {
     --whitesmoke: #c7c1bb;
+    --blue: #0071e3;
     --secondary: #86868b;
 }
 
@@ -14,6 +15,19 @@
 section {
     margin: 160px 0 206px 0;
 }
+
+li {
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0px 8px;
+}
+
+li:hover {
+    color: white;
+}
+
 
 strong {
     color: white !important;
@@ -32,11 +46,35 @@ h4 {
     font-weight: bold;
 }
 
-video {
+video,
+img {
     object-fit: cover;
 }
 
 .bg-blur {
     backdrop-filter: blur(20px) !important;
     background-color: #424245b3 !important;
+}
+
+.bg-gradient {
+    background: radial-gradient(100% 50% at center, #2c201a, #000);
+}
+
+.text-gradient {
+    flex: 1;
+    background: linear-gradient(90deg, #efcdbb, #dab8a4 50%, #a3735e calc(100% - 5px), rgba(0, 0, 0, 0) calc(100% - 4px));
+    background-size: calc(100% - 1px) auto;
+    clip-path: content-box;
+    background-clip: text;
+    color: rgba(0, 0, 0, 0);
+}
+.p-container {
+    color: #86868b;
+    gap: 50px;
+    margin: 96px 0px;
+    font-size: 22px;
+    line-height: 1.381002381;
+    font-weight: 600;
+    letter-spacing: .011em;
+    text-justify: newspaper;
 }

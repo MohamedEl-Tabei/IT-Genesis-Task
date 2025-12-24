@@ -7,7 +7,7 @@
 }
 nav{
     position: sticky;
-    z-index: 1000;
+    z-index: 9;
     padding-bottom: 100px;
 }
 .circle-color {

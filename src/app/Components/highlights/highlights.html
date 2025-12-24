@@ -36,7 +36,7 @@
         <div class="bg-blur rounded-full">
             @for (button of slides; track $index) {
 
-            <div class="rounded-full dot  {{activeSlide==$index?'active':''}}"   (click)="onSwap($index)">
+            <div class="rounded-full dot  {{activeSlide==$index?'active':''}}" (click)="onSwap($index)">
                 <div class="h-full bg-white rounded-full opacity-50" [style.width]="timeLeftPercent()"
                     [class.hidden]="activeSlide!=$index"></div>
             </div>

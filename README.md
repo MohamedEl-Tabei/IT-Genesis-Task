@@ -3,8 +3,8 @@
 
 https://it-genesis-task.vercel.app/
 
-## Tech Stack
+## Tech 
 
-**Client:** Angular, Swiper, TailwindCSS, 
+Angular, Swiper, TailwindCSS
 
 

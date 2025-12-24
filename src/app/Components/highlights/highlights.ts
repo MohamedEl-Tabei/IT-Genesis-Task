@@ -18,7 +18,7 @@ export class Highlights {
   timeLeftPercent = signal("0%");
   activeSlide: number = 0
   swiperRef = viewChild<ElementRef<SwiperContainer>>("swiperRef");
-  setionRef = viewChild<ElementRef<SwiperContainer>>("setionRef");
+  setionRef = viewChild<ElementRef<HTMLElement>>("setionRef");
   enterClass = signal("fade-in-bottom")
   onSwiperslidechange() {
     let swiper = this.swiperRef()?.nativeElement.swiper
