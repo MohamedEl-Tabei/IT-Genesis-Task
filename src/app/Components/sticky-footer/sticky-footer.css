@@ -7,4 +7,5 @@ svg{
     display: flex;
     align-items: center;
     gap: 10px;
+    transition-duration: 1s;
 }

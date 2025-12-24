@@ -2,10 +2,19 @@
     <swiper-container #swiperRefScreen slides-per-view="auto" centered-slides="true" space-between="20" appAnimation
         action="fade-in-bottom" [threshold]=".1">
         <swiper-slide>
-            <div class="swiper-zoom-container">
-                <div class="swiper-zoom-target zoom">
-                    <video class="rounded-2xl" [muted]="true" [autoplay]="true" src="{{src()}}"></video>
-                    <img class="absolute top-0 right-1" src="images/iphone.png" alt="">
+            <div class="swiper-zoom-container ">
+
+                <div class="swiper-zoom-target zoom relative">
+                    @if(this.swiperControl?.activeIndex == 0){
+                    <h4 class="absolute" animate.leave="fade-out-leave" animate.enter="fade-in-enter">{{text()}}</h4>
+                    }
+                    @if (isVideo()) {
+                    <video class="screen" [muted]="true" [autoplay]="true" src="{{src()}}"></video>
+                    }
+                    @else {
+                    <img class=" screen" src="{{src()}}" />
+                    }
+                    <img class="frame absolute top-0 right-1" src="images/iphone.png" alt="">
                 </div>
             </div>
         </swiper-slide>
@@ -14,8 +23,7 @@
         centered-slides="true" space-between="20" (wheel)="onScroll($event)" appAnimation action="fade-in-bottom"
         [threshold]=".1">
 
-        @for (slide of [1,2,3]; track $index) {
-        <swiper-slide>{{slide}} </swiper-slide>
-        }
+        <swiper-slide class="opacity-0">1 </swiper-slide>
+        <swiper-slide class="opacity-0">2 </swiper-slide>
     </swiper-container>
 </div>

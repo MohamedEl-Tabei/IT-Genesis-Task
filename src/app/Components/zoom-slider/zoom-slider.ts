@@ -17,7 +17,9 @@ export class ZoomSlider {
   swiperControl!: Swiper | undefined
   swiperElementControl!: SwiperContainer | undefined
   src = input<string>()
-  ratio = 2.4
+  text = input<string>()
+  isVideo=input<boolean>(false)
+  ratio = 2.5
   isBegining = false
   ngAfterViewInit() {
     this.swiperElementScreen = this.swiperRefScreen()?.nativeElement
@@ -42,7 +44,7 @@ export class ZoomSlider {
   onScrollBottom(event: WheelEvent) {
     if (this.swiperControl?.progress) {
       const r = this.swiperControl?.progress;
-      this.swiperScreen?.zoom.in(this.ratio - r)
+      this.swiperScreen?.zoom.in(this.ratio - r - .5)
     }
     if (this.swiperControl?.isEnd) this.swiperControl.mousewheel.disable()
     else {
@@ -56,4 +58,5 @@ export class ZoomSlider {
     if (evnt.deltaY < 0) this.onScrollTop(evnt)
     else this.onScrollBottom(evnt)
   }
+  
 }

@@ -5,7 +5,7 @@
         <path [attr.d]="icon"></path>
       </svg></a>
   </div>
-  <video #videoRef appAutoPlay [muted]="true" (play)="onPlay()"  (ended)="onEnd()" (pause)="onPause()" [autoplay]="true"
+  <video #videoRef appAutoPlay [muted]="true" (play)="onPlay()" (ended)="onEnd()" (pause)="onPause()" [autoplay]="true"
     src="/videos/cameraControl.mp4"></video>
   <div class="grid grid-cols-12  p-container">
     <p class="col-span-2"></p>
@@ -30,5 +30,5 @@
 
   </div>
   <app-camera-control-slider></app-camera-control-slider>
-<app-visual-intelligence></app-visual-intelligence>
+  <app-visual-intelligence></app-visual-intelligence>
 </section>
