@@ -24,7 +24,7 @@ export class App {
   constructor(public stickyFooterService:StickyFooterService){}
   //#region Ref
   heroRef=viewChild<ElementRef<HTMLElement>>("heroRef")
-  noFooterRef=viewChild<ElementRef<HTMLElement>>("noFooterRef")
+  footerRef=viewChild<ElementRef<HTMLElement>>("footerRef")
   //#endregion
   protected title = 'IT-Genesis-Task';
 }

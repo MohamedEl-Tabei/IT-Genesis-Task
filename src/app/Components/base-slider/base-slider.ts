@@ -27,6 +27,7 @@ export class BaseSlider {
   signalName = input<TSignalName>(undefined)
   descriptions = input<string[]>([])
   classNames = input<string>("")
+  rounded=input<boolean>(true)
   //#endregion
   //#region lifecyle
   constructor(private swiperService: SwiperService, private videoService: VideoSrvice) {

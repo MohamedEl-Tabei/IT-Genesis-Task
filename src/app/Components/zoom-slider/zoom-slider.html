@@ -5,7 +5,7 @@
             <div class="swiper-zoom-container ">
 
                 <div class="swiper-zoom-target zoom relative">
-                    @if(this.swiperControl?.activeIndex == 0){
+                    @if(activeIndex== 0){
                     <h4 class="absolute" animate.leave="fade-out-leave" animate.enter="fade-in-enter">{{text()}}</h4>
                     }
                     @if (isVideo()) {

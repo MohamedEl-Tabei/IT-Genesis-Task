@@ -10,7 +10,8 @@ export class SwiperService {
   signals = {
     closerLook: signal<Swiper | undefined>(undefined),
     titanium: signal<Swiper | undefined>(undefined),
-    cameraControl: signal<Swiper | undefined>(undefined)
+    cameraControl: signal<Swiper | undefined>(undefined),
+    vivaResolution: signal<Swiper | undefined>(undefined),
   }
   setSignal(signalName: TSignalName, swiper: Swiper | undefined) {
     if (signalName) this.signals[signalName].set(swiper)

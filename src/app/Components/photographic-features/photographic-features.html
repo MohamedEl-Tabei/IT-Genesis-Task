@@ -1,4 +1,4 @@
-<section class="grid grid-flow-col grid-rows-3 " appAnimation action="fade-in">
+<section class="grid grid-flow-col grid-rows-3 relative" appAnimation action="fade-in">
     <div class=" text-container ">
         <h4 class="w-100">Lock in your look.</h4>
         <p #p1>
@@ -29,9 +29,10 @@
             applying a one-size-fits-all approach.
 
     </div>
-    <div class="row-span-3  relative">
-        <img class="opacity-0 " appAnimation [threshold]="1" action="fade-in" [ref]="p1" src="images/feature1.jpg" alt="" srcset="">
-        <img class="opacity-0" appAnimation [threshold]="1" action="fade-in" [ref]="p2" src="images/feature2.jpg" alt="" srcset="">
-        <img class="opacity-0" appAnimation [threshold]="1" action="fade-in" [ref]="p3" src="images/feature3.jpg" alt="" srcset="">
+
+    <div class="sticky col-span-5">
+        <img appAnimation [threshold]=".1" action="fade-in" [ref]="p1" src="images/feature1.jpg">
+        <img appAnimation [threshold]=".1" action="fade-in" [ref]="p2" src="images/feature2.jpg">
+        <img appAnimation [threshold]=".1" action="fade-in" [ref]="p3" src="images/feature3.jpg">
     </div>
 </section>

@@ -18,9 +18,10 @@ export class ZoomSlider {
   swiperElementControl!: SwiperContainer | undefined
   src = input<string>()
   text = input<string>()
-  isVideo=input<boolean>(false)
+  isVideo = input<boolean>(false)
   ratio = 2.5
   isBegining = false
+  activeIndex = 0
   ngAfterViewInit() {
     this.swiperElementScreen = this.swiperRefScreen()?.nativeElement
     this.swiperScreen = this.swiperElementScreen?.swiper
@@ -55,8 +56,9 @@ export class ZoomSlider {
   }
   onScroll(event: Event) {
     let evnt = event as WheelEvent
+    this.activeIndex = this.swiperControl?.activeIndex || 0
     if (evnt.deltaY < 0) this.onScrollTop(evnt)
     else this.onScrollBottom(evnt)
   }
-  
+
 }

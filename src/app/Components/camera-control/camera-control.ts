@@ -4,10 +4,11 @@ import { BaseTextGlow } from "../base-text-glow/base-text-glow";
 import { AutoPlay } from "../../Directives/auto-play";
 import { VideoSrvice } from '../../services/video-srvice';
 import { VisualIntelligence } from "../visual-intelligence/visual-intelligence";
+import { Grid } from "../grid/grid";
 
 @Component({
   selector: 'app-camera-control.',
-  imports: [CameraControlSlider, BaseTextGlow, AutoPlay, VisualIntelligence],
+  imports: [CameraControlSlider, BaseTextGlow, AutoPlay, VisualIntelligence, Grid],
   templateUrl: './camera-control.html',
   styleUrl: './camera-control.css',
 })

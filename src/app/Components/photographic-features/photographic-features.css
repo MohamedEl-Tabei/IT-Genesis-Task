@@ -2,13 +2,10 @@ section{
     margin-inline: 260px;
     gap: 50px;
 }
-img{
-    height: 90vh;
-    position: fixed;
+.sticky{
     margin-top: 100px;
-    bottom: 10px;
+    top: 70px;
     z-index: -1;
-    border-radius: 50px;
 }
 .text-container {
     display: flex;
@@ -19,4 +16,9 @@ img{
 }
 p{
     margin-top: 40px;
+}
+img{
+    height: 90vh;
+    position: absolute;
+    right: 20px;
 }

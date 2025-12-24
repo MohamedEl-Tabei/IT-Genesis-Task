@@ -40,6 +40,10 @@ p {
     color: var(--secondary);
 }
 
+h2{
+    font-size: 56px;
+    font-weight: 600;
+}
 
 h4 {
     font-size: 40px;
@@ -68,13 +72,4 @@ img {
     background-clip: text;
     color: rgba(0, 0, 0, 0);
 }
-.p-container {
-    color: #86868b;
-    gap: 50px;
-    margin: 96px 0px;
-    font-size: 22px;
-    line-height: 1.381002381;
-    font-weight: 600;
-    letter-spacing: .011em;
-    text-justify: newspaper;
-}
+

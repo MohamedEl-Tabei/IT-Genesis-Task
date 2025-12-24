@@ -1,22 +1,24 @@
 <app-navbar></app-navbar>
-<app-sticky-navbar class="sticky top-0 z-100 backdrop-blur-sm" appAnimation action="fade-out-top" [ref]="heroRef"
-    [threshold]=".5"></app-sticky-navbar>
-<div #noFooterRef>
-    <div #heroRef>
-        <app-hero></app-hero>
-    </div>
 
-    <app-highlights></app-highlights>
-    <app-closer-look></app-closer-look>
-    <app-titanium></app-titanium>
+
+<div #heroRef>
+    <app-hero></app-hero>
 </div>
-<app-camera-control appSetMessage message="Go deeper on Camera Control"></app-camera-control>
-<app-vision4k appSetMessage message="Go deeper on Camera Control"></app-vision4k>
+<div class="sticky top-0 z-100 backdrop-blur-sm " appAnimation action="fade-out-top" [ref]="heroRef" [threshold]=".5">
+    <app-sticky-navbar></app-sticky-navbar>
+</div>
 
-<app-viva-resolution appSetMessage message="Nerd out on Pro video"></app-viva-resolution>
-<div appAnimation action="slide-out-bottom" [ref]="noFooterRef"
-    class="w-max m-auto flex align-center rounded-full p-2 px-3 sticky bottom-10  z-19 bg-blur">
-    <app-sticky-footer></app-sticky-footer>
+<app-highlights></app-highlights>
+<app-closer-look></app-closer-look>
+<app-titanium></app-titanium>
+<div #footerRef >
+    <app-camera-control appSetMessage message="Go deeper on Camera Control"></app-camera-control>
+    <app-vision4k appSetMessage message="Nerd out on Pro video"></app-vision4k>
+    <app-viva-resolution appSetMessage message="Zoom in on 5x Telephoto"></app-viva-resolution>
+    <div appAnimation action="bounce-in-fwd" [threshold]=".1" [ref]="footerRef"
+        class="w-max m-auto flex align-center rounded-full p-2 px-3 sticky bottom-10  z-19 bg-blur">
+        <app-sticky-footer></app-sticky-footer>
+    </div>
 </div>
 
 <app-photographic-style></app-photographic-style>

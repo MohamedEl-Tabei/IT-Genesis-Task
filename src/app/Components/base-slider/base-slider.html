@@ -1,11 +1,11 @@
 <swiper-container #swiperRef slides-per-view="auto" centered-slides="true" space-between="20"
-    class="rounded-xl m-auto {{classNames()}}" (swiperslidechange)="onSwiperslidechange()" 
+    class="m-auto {{classNames()}}" (swiperslidechange)="onSwiperslidechange()" [class.rounded-2xl]="rounded()"
     appAnimation action="fade-in-bottom" [threshold]=".1">
 
     @for (slide of slides(); track $index) {
     <swiper-slide [style.width]="slideWidth()">
         @if (slide.isVideo) {
-        <video (ended)="onVideoEnded()" class="rounded-2xl" [muted]="true" [autoplay]="$index==0"
+        <video (ended)="onVideoEnded()" [class.rounded-xl]="rounded()" [muted]="true" [autoplay]="$index==0"
             src="{{slide.src}}"></video>
         @if(activeVideoIndex==$index){
         <app-button class="absolute right-23 top-118" bg="blur" (click)="onToggleVideo()">
@@ -16,7 +16,7 @@
         }
         }
         @else {
-        <img class="rounded-2xl" src="{{slide.src}}" alt="">
+        <img [class.rounded-xl]="rounded()" src="{{slide.src}}" alt="">
         }
         @if(descriptions().length){
         <div class="description {{classNames().includes('text-gradient')?'text-gradient':''}}">

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { Grid } from "../grid/grid";
 
 @Component({
   selector: 'app-visual-intelligence',
-  imports: [],
+  imports: [Grid],
   templateUrl: './visual-intelligence.html',
   styleUrl: './visual-intelligence.css',
 })
